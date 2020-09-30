@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity {
 //    }
     public void btn00Click(View view){
         EditText eText = (EditText)findViewById(R.id.resultEdit);
+        //help
         eText.setText(eText.getText()+"0");
     }
     public void btn01Click(View view){
