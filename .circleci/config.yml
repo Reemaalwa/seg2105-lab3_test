@@ -10,7 +10,11 @@ jobs:
       - checkout
       - run:
           name: Accept Android SDK licenses
-          command: yes | sdkmanager --licenses
+          command: |
+            mkdir -p $ANDROID_HOME/licenses
+            echo -e "\n8933bad161af4178b1185d1a37fbf41ea5269c55\n" > $ANDROID_HOME/licenses/android-sdk-license
+            echo -e "\n84831b9409646a918e30573bab4c9c91346d8abd\n" > $ANDROID_HOME/licenses/android-sdk-preview-license
+            sdkmanager --update
       - restore_cache:
           key: jars-{{ checksum "build.gradle" }}-{{ checksum "app/build.gradle" }}
       - run:
